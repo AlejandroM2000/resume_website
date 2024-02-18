@@ -1,0 +1,38 @@
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS experience;
+DROP TABLE IF EXISTS skills;
+DROP TABLE IF EXISTS education;
+DROP TABLE IF EXISTS projects;
+DROP TABLE IF EXISTS contact;
+
+CREATE TABLE user (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  full_name TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL
+);
+
+CREATE TABLE experience (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  company TEXT NOT NULL,
+  title TEXT NOT NULL,
+  region TEXT NOT NULL,
+  time_range TEXT NOT NULL,
+  body TEXT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES user (id)
+);
+
+CREATE TABLE education (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    school_name TEXT NOT NULL ,
+    degree TEXT NOT NULL,
+    time_range TEXT NOT NULL
+)
+
+CREATE TABLE contact (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    phone_number TEXT NOT NULL,
+    email TEXT NOT NULL, 
+    website TEXT NOT NULL,
+)
