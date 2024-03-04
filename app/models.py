@@ -32,7 +32,7 @@ class Contact(db.Model):
     )
     user_id = db.Column(
         db.Integer,
-        db.ForeignKey('user.id'),
+        db.ForeignKey('users.id'),
         index=False,
         unique=True,
         nullable=False
@@ -55,7 +55,7 @@ class Education(db.Model):
     )
     user_id = db.Column(
         db.Integer,
-        db.ForeignKey('user.id'),
+        db.ForeignKey('users.id'),
         index=False,
         unique=True,
         nullable=False
@@ -88,7 +88,7 @@ class Experience(db.Model):
     )
     user_id = db.Column(
         db.Integer,
-        db.ForeignKey('user.id'),
+        db.ForeignKey('users.id'),
         index=False,
         unique=True,
         nullable=False
@@ -124,14 +124,14 @@ class Experience(db.Model):
 
 class Skill(db.Model):
 
-    __tablename__ = 'skill'
+    __tablename__ = 'skills'
     id = db.Column(
         db.Integer,
         primary_key=True
     )
     user_id = db.Column(
         db.Integer,
-        db.ForeignKey('user.id'),
+        db.ForeignKey('users.id'),
         index=False,
         unique=True,
         nullable=False
@@ -145,30 +145,3 @@ class Skill(db.Model):
     def __repr__(self):
         return '<Skill {}>'.format(self.user_id)
     
-class Skill(db.Model):
-
-    __tablename__ = 'skill'
-    id = db.Column(
-        db.Integer,
-        primary_key=True
-    )
-    user_id = db.Column(
-        db.Integer,
-        db.ForeignKey('user.id'),
-        index=False,
-        unique=True,
-        nullable=False
-    )
-    title = db.Column(
-        db.String(30),
-        index=False,
-        unique=False
-    )
-    body = db.Column(
-        postgresql.ARRAY(String),
-        index=False,
-        unique=False
-    )
-
-    def __repr__(self):
-        return '<Skill {}>'.format(self.user_id)

@@ -2,10 +2,9 @@
 
 {% block content %}
     <h1>{% block title %} users {% endblock %}</h1>
-    {% for user in users %}
-        <div class='users'>
-            <h3>{{ user[1] }}<h3>
+
+        <div class='user'>
+            <h3>{{ user.id }}<h3>
 
         </div>
-    {% endfor %}
 {% endblock %}
