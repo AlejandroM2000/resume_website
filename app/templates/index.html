@@ -1,10 +1,36 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <h1>{% block title %} users {% endblock %}</h1>
-
-        <div class='user'>
-            <h3>{{ user.id }}<h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alejandro Malanche</title>
+</head>
+<body>
+    <div id="content">
+        <div id="user-personal">
+            <h3 id="name"> {{ user.username }}</h3>
+            <ul class="contact" id="email"> {{ contact.email }}</ul>
+            <ul class="contact" id="phone-number">{{ contact.phone_number }}</ul>
+            <!-- <ul class="contact" id="address"></ul> -->
+            <ul class="contact" id="linkedin">{{ contact.websites[0] }}</ul>
+            <ul class="contact" id="github">{{ contact.websites[1] }}</ul>
+            
+        </div>
+        <div id="education">
+            <h1 class="title"> Education </h1>
+        </div>
+        <div id="experience">
+            <h1 class="title"> Experience </h1>
+        </div>
+        <div id="projects">
+            <h1 class="title"> Projects </h1>
+        </div>
+        <div id="skills">
+            <h1 class="title"> Skills    </h1>
+        </div>
+        <div id="socials">
 
         </div>
-{% endblock %}
+    </div>
+</body>
+</html>

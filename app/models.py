@@ -42,6 +42,18 @@ class Contact(db.Model):
         index=False,
         unique=False
     )
+    email = db.Column(
+        db.String(15),
+        index=False,
+        unique=False
+    )
+
+    websites = db.Column(
+        postgresql.ARRAY(String),
+        index=False,
+        unique=False
+    )
+
 
     def __repr__(self):
         return '<Contact {}>'.format(self.user_id)

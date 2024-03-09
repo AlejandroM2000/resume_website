@@ -15,4 +15,4 @@ def retrieve_user():
     education = db.session.execute(Education.query.filter(Education.user_id == user.id)).first()[0]
     # skills = db.session.execute(Skill.query.filter(Skill.user_id == user.id)).first()[0]
     experience = db.session.execute(Experience.query.filter(Experience.user_id == user.id)).first()[0]
-    return render_template('index.html', user=user)
+    return render_template('index.html', user=user, contact=contact)
