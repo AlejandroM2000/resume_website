@@ -18,15 +18,53 @@
         </div>
         <div id="education">
             <h1 class="title"> Education </h1>
+            <div id="schoolname_year"><span id="school-name"> {{ education.school_name }}</span> <span id="school-year"> {{ education.time_range }}</span></div>
+            <div id="degree-location"><span id="degree"> {{ education.degree }}</span> <span id="location"> {{ education.location }}</span></div>
         </div>
-        <div id="experience">
-            <h1 class="title"> Experience </h1>
+        <div id="exp">
+            {% block content %}
+
+                <h1 class="title"> Experience </h1>
+                {% for idx in range(experience | length)%}
+                    {% for job in experience[idx] %}
+                        <div class="bullets-container">
+                            <p class="content"> {{ job.company }}        {{job.region}} </p>
+                            <p class="content">{{ job.position }}          {{job.time_range}}</p>
+                            <div class="body">
+                                <ul>
+                                    {% for bul in job.body %}
+                                        <li class="content-item">{{bul}}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endblock %}
+
+            
         </div>
         <div id="projects">
             <h1 class="title"> Projects </h1>
         </div>
         <div id="skills">
-            <h1 class="title"> Skills    </h1>
+
+                <h1 class="title"> Skills </h1>
+                {% for idx in range(skills | length)%}
+                    {% for skill in skills[idx] %}
+                        <div class="bullets-container">
+                            <p class="content"> {{ skill.category }} </p>
+
+                            <div class="body">
+                                <ul>
+                                    {% for item in skill.body %}
+                                        <li class="content-item">{{ item }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
         </div>
         <div id="socials">
 

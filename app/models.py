@@ -82,6 +82,11 @@ class Education(db.Model):
         index=False,
         unique=False
     )
+    location = db.Column(
+        db.String(50),
+        index=False,
+        unique=False
+    )
     time_range = db.Column(
         db.String(50),
         index=False,
@@ -147,6 +152,11 @@ class Skill(db.Model):
         index=False,
         unique=True,
         nullable=False
+    )
+    category = db.Column(
+        db.String(30),
+        index=False,
+        unique=False
     )
     body = db.Column(
         postgresql.ARRAY(String),
