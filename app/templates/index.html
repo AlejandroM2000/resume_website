@@ -29,7 +29,7 @@
                     {% for job in experience[idx]| sort(attribute='id') %}
                         <div class="bullets-container">
                             <p class="content"> {{ job.company }}        {{job.region}} </p>
-                            <p class="content">{{ job.position }}          {{job.time_range}}</p>
+                            <p class="content">{{ job.position }}          {{job.date_start}}</p>
                             <div class="body">
                                 <ul>
                                     {% for bul in job.body %}

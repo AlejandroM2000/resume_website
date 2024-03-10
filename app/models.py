@@ -125,8 +125,8 @@ class Experience(db.Model):
         index=False,
         unique=False
     )
-    time_range = db.Column(
-        db.String(20),
+    date_start = db.Column(
+        db.DateTime,
         index=False,
         unique=False
     )

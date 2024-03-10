@@ -1,6 +1,7 @@
 from flask import request, render_template, make_response
 from datetime import datetime as dt
 from flask import current_app as app
+from sqlalchemy import desc
 from .models import db, User, Contact, Education, Skill, Experience, Project
 
 
@@ -14,6 +15,6 @@ def retrieve_user():
     contact = db.session.execute(Contact.query.filter(Contact.user_id == user.id)).first()[0]
     education = db.session.execute(Education.query.filter(Education.user_id == user.id)).first()[0]
     skills = db.session.execute(Skill.query.filter(Skill.user_id == user.id)).fetchall()
-    experience = db.session.execute(Experience.query.filter(Experience.user_id == user.id).order_by(Experience.id)).fetchall()
+    experience = db.session.execute(Experience.query.filter(Experience.user_id == user.id).order_by(desc(Experience.date_start))).fetchall()
     projects = db.session.execute(Project.query.filter(Project.user_id == user.id)).fetchall()
     return render_template('index.html', user=user, contact=contact, education=education, experience=experience, skills=skills, projects=projects)
