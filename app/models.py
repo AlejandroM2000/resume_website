@@ -167,3 +167,31 @@ class Skill(db.Model):
     def __repr__(self):
         return '<Skill {}>'.format(self.user_id)
     
+class Project(db.Model):
+
+    __tablename__ = 'projects'
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey('users.id'),
+        index=False,
+        unique=True,
+        nullable=False
+    )
+    title = db.Column(
+        db.String(30),
+        index=False,
+        unique=False
+    )
+    body = db.Column(
+        postgresql.ARRAY(String),
+        index=False,
+        unique=False
+    )
+
+    def __repr__(self):
+        return '<Project {}>'.format(self.user_id)
+    

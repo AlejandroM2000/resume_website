@@ -9,12 +9,12 @@
     <div id="content">
         <div id="user-personal">
             <h3 id="name"> {{ user.username }}</h3>
-            <ul class="contact" id="email"> {{ contact.email }}</ul>
-            <ul class="contact" id="phone-number">{{ contact.phone_number }}</ul>
-            <!-- <ul class="contact" id="address"></ul> -->
-            <ul class="contact" id="linkedin">{{ contact.websites[0] }}</ul>
-            <ul class="contact" id="github">{{ contact.websites[1] }}</ul>
-            
+            <ul class="contact">
+                <li>{{ contact.email }}</li>
+                <li>{{ contact.phone_number }}</li>
+                <li>{{ contact.websites[0] }}</li>
+                <li>{{ contact.websites[1] }}</li>
+            </ul>
         </div>
         <div id="education">
             <h1 class="title"> Education </h1>
@@ -22,11 +22,11 @@
             <div id="degree-location"><span id="degree"> {{ education.degree }}</span> <span id="location"> {{ education.location }}</span></div>
         </div>
         <div id="exp">
-            {% block content %}
+
 
                 <h1 class="title"> Experience </h1>
-                {% for idx in range(experience | length)%}
-                    {% for job in experience[idx] %}
+                <!-- {% for idx in range(experience | length)%} -->
+                    {% for job in experience[idx]| sort(attribute='id') %}
                         <div class="bullets-container">
                             <p class="content"> {{ job.company }}        {{job.region}} </p>
                             <p class="content">{{ job.position }}          {{job.time_range}}</p>
@@ -39,13 +39,28 @@
                             </div>
                         </div>
                     {% endfor %}
-                {% endfor %}
-            {% endblock %}
+                <!-- {% endfor %} -->
+
 
             
         </div>
         <div id="projects">
             <h1 class="title"> Projects </h1>
+                {% for idx in range(projects | length)%}
+                    {% for project in projects[idx] %}
+                        <div class="bullets-container">
+                            <p class="content"> {{ project.title }} </p>
+
+                            <div class="body">
+                                <ul>
+                                    {% for item in project.body %}
+                                        <li class="content-item">{{ item }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
         </div>
         <div id="skills">
 
@@ -65,9 +80,6 @@
                         </div>
                     {% endfor %}
                 {% endfor %}
-        </div>
-        <div id="socials">
-
         </div>
     </div>
 </body>
