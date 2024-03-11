@@ -1,0 +1,20 @@
+body {
+    text-align: center;
+}
+
+div.inner-container {
+    border-style: solid;
+    border-color: blue;
+    border-radius: 25px;
+    border-width: 1px;
+    width: 50%;
+    margin: auto;
+}
+ul li {
+    text-align: center;
+    list-style-position: inside;
+}
+ul.contact li {
+    display: inline;
+    list-style-type: none;
+}
